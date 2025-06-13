@@ -40,6 +40,13 @@ document.addEventListener('DOMContentLoaded', function () {
             hunger: 0,
             energy: 0
         },
+        items: {
+            toy: 3,
+            food: 5,
+            medicine: 2,
+            ball: 2,
+            hat: 1
+        },
         lastActionTime: Date.now()
     };
 
@@ -143,10 +150,64 @@ document.addEventListener('DOMContentLoaded', function () {
         startAnimation('evolved');
     }
 
+    function useItem(itemType) {
+        switch (itemType) {
+            case 'toy':
+                state.happiness = Math.min(100, state.happiness + 15);
+                playSound.play();
+                startAnimation('playing');
+                showNotification("Your pet loves the toy!");
+                break;
+            case 'food':
+                state.hunger = Math.min(100, state.hunger + 20);
+                feedSound.play();
+                startAnimation('feeding');
+                showNotification("Yummy! Your pet is eating.");
+                break;
+            case 'medicine':
+                if (state.currentAnimation === 'sick') {
+                    startAnimation(state.isEvolved ? 'evolved' : 'idle');
+                    showNotification("Your pet feels better now!");
+                } else {
+                    showNotification("Your pet doesn't need medicine.");
+                }
+                break;
+            case 'ball':
+                state.happiness = Math.min(100, state.happiness + 10);
+                state.energy = Math.max(0, state.energy - 5);
+                playSound.play();
+                startAnimation('playing');
+                showNotification("Your pet is playing with the ball!");
+                break;
+            case 'hat':
+                state.happiness = Math.min(100, state.happiness + 5);
+                showNotification("Your pet looks stylish with the hat!");
+                const oldSrc = petImage.src;
+                petImage.src = 'assets/hat_pet.png';
+                setTimeout(() => {
+                    petImage.src = oldSrc;
+                }, 3000);
+                break;
+        }
+
+        updateStatsDisplay();
+    }
+
+    function setupInventory() {
+        const items = document.querySelectorAll('.item');
+        items.forEach(item => {
+            const itemType = item.dataset.item;
+            item.addEventListener('click', () => {
+                useItem(itemType);
+            });
+        });
+    }
+
     function init() {
         updateStatsDisplay();
         startAnimation('idle');
         startNeedsDecay();
+        setupInventory();
         bgMusic.volume = 0.3;
         bgMusic.play().catch(e => console.log("Auto-play prevented"));
 
