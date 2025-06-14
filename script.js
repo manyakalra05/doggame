@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 petImage.src = 'assets/hat_pet.png';
                 setTimeout(() => {
                     petImage.src = oldSrc;
-                }, 3000);
+                }, 5000);
                 break;
         }
 
