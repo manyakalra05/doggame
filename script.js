@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
         petting: { frames: ['assets/petting_1.png', 'assets/petting_2.png', 'assets/petting_3.png'], speed: 300, loop: false },
         feeding: { frames: ['assets/feeding_1.png', 'assets/feeding_2.png', 'assets/feeding_3.png'], speed: 300, loop: false },
         playing: { frames: ['assets/playing_1.png', 'assets/playing_2.png', 'assets/playing_3.png'], speed: 300, loop: false },
+        ball: { frames: ['assets/ball_1.png', 'assets/ball_2.png', 'assets/ball_3.png'], speed: 300, loop: false },
         sleeping: { frames: ['assets/sleeping_1.png', 'assets/sleeping_2.png'], speed: 800, loop: true },
         evolved: { frames: ['assets/evolved_1.png', 'assets/evolved_2.png'], speed: 500, loop: true },
         sick: { frames: ['assets/sick_1.png', 'assets/sick_2.png'], speed: 1000, loop: true }
@@ -176,7 +177,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 state.happiness = Math.min(100, state.happiness + 10);
                 state.energy = Math.max(0, state.energy - 5);
                 playSound.play();
-                startAnimation('playing');
+                startAnimation('ball');
                 showNotification("Your pet is playing with the ball!");
                 break;
             case 'hat':
