@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
         idle: { frames: ['assets/idle_1.png', 'assets/idle_2.png', 'assets/idle_3.png'], speed: 1000, loop: true },
         petting: { frames: ['assets/petting_1.png', 'assets/petting_2.png', 'assets/petting_3.png'], speed: 300, loop: false },
         feeding: { frames: ['assets/feeding_1.png', 'assets/feeding_2.png', 'assets/feeding_3.png'], speed: 300, loop: false },
-        playing: { frames: ['assets/playing_1.png', 'assets/playing_2.png', 'assets/playing_3.png'], speed: 200, loop: false },
+        playing: { frames: ['assets/playing_1.png', 'assets/playing_2.png', 'assets/playing_3.png'], speed: 300, loop: false },
         sleeping: { frames: ['assets/sleeping_1.png', 'assets/sleeping_2.png'], speed: 800, loop: true },
         evolved: { frames: ['assets/evolved_1.png', 'assets/evolved_2.png'], speed: 500, loop: true },
         sick: { frames: ['assets/sick_1.png', 'assets/sick_2.png'], speed: 1000, loop: true }
